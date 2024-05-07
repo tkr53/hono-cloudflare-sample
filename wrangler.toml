@@ -1,0 +1,22 @@
+name = "hono-cloudflare-sample"
+compatibility_date = "2023-12-01"
+main = "src/index.ts"
+
+# [vars]
+# MY_VAR = "my-variable"
+
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# [[r2_buckets]]
+# binding = "MY_BUCKET"
+# bucket_name = "my-bucket"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "remix-cloudflare-sample-db"
+database_id = "5b57f12c-d8af-4d2a-89c4-7cc87601cc14"
+
+# [ai]
+# binding = "AI"
