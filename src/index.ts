@@ -16,17 +16,17 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-app.get('/book', (c) => {
-  const results = c.env.DB.prepare('SELECT * FROM book;').all<Book>()
-  if (!!results) {
+app.get('/book',  async (c) => {
+  const {results} = await c.env.DB.prepare('SELECT * FROM book;').all<Book>()
+  if (results.length === 0) {
     return c.text('Not Found', 404)
   }
   return c.json(results)
 })
 
-app.get('/book/:id', (c) => {
-  const results = c.env.DB.prepare('SELECT * FROM book WHERE id = ?').bind(c.req.param('id')).all<Book>()
-  if (!!results) {
+app.get('/book/:id', async (c) => {
+  const {results} = await c.env.DB.prepare('SELECT * FROM book WHERE id = ?').bind(c.req.param('id')).all<Book>()
+  if (results.length === 0) {
     return c.text('Not Found', 404)
   }
   return c.json(results)
